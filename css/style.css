@@ -1,109 +1,127 @@
 html {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
-
-/* body */
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
 }
 body {
-    background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2396ceb4' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    font-family: 'Coda', cursive;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2396ceb4' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+	font-family: 'Coda', cursive;
+	font-size: 16px;
 }
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 50px;
+	font-family: 'Gloria Hallelujah', cursive;
 }
 
-/* deck of cards */
 
+/* Styles for the deck of cards */
 .deck {
-    width: 60%;
-    background: linear-gradient(160deg, #ffe28a 0%, #fffeb3 100%);
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-
+	width: 85%;
+	background:  linear-gradient(160deg, #ffe28a 0%, #fffeb3 100%);
+	padding: 1rem;
+	border-radius: 4px;
+	box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 0 3em;
 }
 .deck .card {
-    height: 12.5rem;
-    width: 12.5rem;
-    margin: 0.8rem 0.4rem;
-    background: #2e3d49;
-    font-size: 0;
-    color: #ffffff;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+	height: 4.7rem;
+	width: 4.7rem;
+	margin: 0.2rem 0.2rem;
+	background: #2e3d49;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
-
 .deck .card.open {
-    transform: rotateY(0);
-    background: #6fcb9f;
-    cursor: default;
-    justify-content: center;
-    align-items: center;
+	transform: rotateY(0);
+	background: #6fcb9f;
+	cursor: default;
+	animation-name: flipInY;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
 }
 .deck .card.show {
-    font-size: 33px;
+	font-size: 33px;
 }
 .deck .card.match {
-    cursor: default;
-    background: #ff6f69;
-    font-size: 33px;
+	cursor: default;
+	background: #ff6f69;
+	font-size: 33px;
+	animation-name: rubberBand;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+.deck .card.unmatched {
+	animation-name: pulse;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+	background: #e2043b;
+}
+.deck .card.disabled {
+	pointer-events: none;
+	opacity: 0.9;
 }
 
-/* Score Panel */
 
+/* Styles for the Score Panel */
 .score-panel {
-    text-align: center;
-    width: 345px;
-    margin-bottom: 20px;
+	text-align: left;
+	margin-bottom: 10px;
 }
 .score-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin: 0 5px 0 0;
 }
 .score-panel .stars li {
-    list-style: none;
-    display: inline-block;
+	list-style: none;
+	display: inline-block;
 }
 .score-panel .restart {
-    float: right;
-    cursor: pointer;
+	float: right;
+	cursor: pointer;
+}
+.fa-star {
+	color: #FFD700;
+}
+.timer {
+	display: inline-block;
+	margin: 0 1rem;
 }
 
+
 /* Styles for congratulations modal */
-
-
 .overlay {
 	position: fixed;
 	top: 0;
@@ -120,9 +138,9 @@ h1 {
 	opacity: 1;
 }
 .popup {
-	margin: 200px auto;
+	margin: 70px auto;
 	padding: 20px;
-	background: #ffe28a;
+	background: #6fcb9f;
 	border-radius: 5px;
 	width: 85%;
 	position: relative;
@@ -145,9 +163,10 @@ h1 {
 	color: #333;
 }
 .popup .close:hover {
-	color: #ff6f69;
+	color: #E5F720;
 }
-.popup .content-1 .content-2 {
+.popup .content-1,
+.content-2 {
 	max-height: 30%;
 	overflow: auto;
 	text-align: center;
@@ -160,19 +179,18 @@ h1 {
 	display: inline-block;
 }
 #play-again {
-	background-color: #ff6f69;
+	background-color: #6fcb9f;
 	padding: 0.7rem 1rem;
 	font-size: 1.1rem;
 	display: block;
 	margin: 0 auto;
 	width: 50%;
 	font-family: 'Gloria Hallelujah', cursive;
-	color: #ffe28a;
+	color: #ffffff;
 	border-radius: 5px;
 }
 
 /* animations */
-
 @keyframes flipInY {
 	from {
 		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
@@ -198,7 +216,6 @@ h1 {
 		transform: perspective(400px);
 	}
 }
-
 @keyframes rubberBand {
 	from {
 		transform: scale3d(1, 1, 1);
@@ -228,7 +245,6 @@ h1 {
 		transform: scale3d(1, 1, 1);
 	}
 }
-
 @keyframes pulse {
 	from {
 		transform: scale3d(1, 1, 1);
@@ -244,106 +260,39 @@ h1 {
 }
 
 
-/* @media-queries */
+/* Media queries*/
 
-@media screen and (max-width: 579px) {
 
-.deck {
+@media (max-width: 320px) {
+	.deck {
+		width: 85%;
+	}
 
-  width: 100%;
-
-}
-.deck .card {
-
-  height: 8.25rem;
-  width: 8.25rem;
-
+	.deck .card {
+		height: 4.7rem;
+		width: 4.7rem;
+	}
 }
 
-}
 
-/* Iphone 6/7/8 */
+/* For Tablets and larger screens */
 
-@media (min-width: 375px) and (max-width: 400px) {
+@media (min-width: 768px) {
+	.container {
+		font-size: 22px;
+	}
 
-.deck {
+	.deck {
+		width: 660px;
+		height: 680px;
+	}
 
-  width: 100%;
+	.deck .card {
+		height: 125px;
+		width: 125px;
+	}
 
-}
-.deck .card {
-
-  height: 8.7rem;
-  width: 8.7rem;
-
-}
-
-}
-
-/* Iphone 6/7/8 plus/ pixel2/pixel2xl */
-
-@media (min-width: 300px) and (max-width: 363px) {
-
-.deck {
-
-  width: 100%;
-
-}
-.deck .card {
-
-  height: 4.7rem;
-  width: 4.7rem;
-
-}
-
-}
-
-@media (min-width: 375px) and (max-width: 475px) {
-
-.deck {
-
-  width: 100%;
-
-}
-.deck .card {
-
-  height: 6.7rem;
-  width: 6.7rem;
-
-}
-
-}
-
-@media (min-width: 580px) and (max-width: 994px) {
-
-.deck {
-
-  width: 100%;
-
-}
-.deck .card {
-
-  height: 6.7rem;
-  width: 6.7rem;
-
-}
-
-}
-
-/* Ipad-pro and similar */
-
-@media (min-width: 1024px) and (max-width: 1199px) {
-
-.deck {
-
-  width: 100%;
-
-}
-.deck .card {
-
-  height: 12.5rem;
-  width: 12.5rem;
-
-}
-
+	.popup {
+		width: 60%;
+	}
 }
